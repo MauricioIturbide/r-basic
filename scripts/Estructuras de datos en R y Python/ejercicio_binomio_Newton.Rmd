@@ -1,0 +1,39 @@
+---
+title: "Binomio de Newton"
+author: "Mauricio Iturbide"
+date: "12/8/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Producto notable
+
+$$(a+b)^2 = a^2 +2ab + b^2$$
+
+# Función con R
+
+```{r}
+binomioNewton2 = function(a,b) {
+  a^2+ 2*a*b + b^2
+}
+binomioNewton2(2,1)
+binomioNewton2(1,2)
+```
+
+# BINOMIO DE NEWTON
+
+$$(a+b)^n = \sum_{k=0}^n {n\choose k}\cdot a^{n-k}\cdot b^k = {n\choose 0}*a^n*b^0+\cdots {n\choose n}*a^0*b^n
+$$
+# Función en R del binomio de Newton
+
+
+```{r}
+binomioNewton = function(a,b,n){
+  cumsum(choose(n,(0:n))*a^{n-(0:n)}*b^(0:n))[n+1]
+}
+binomioNewton(2,1,2)
+binomioNewton(3,4,14)
+```
